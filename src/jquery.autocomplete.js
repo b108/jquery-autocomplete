@@ -604,8 +604,10 @@
                     parsed = self.parseRemoteData(data);
                     self.cacheWrite(filter, parsed);
                 }
-                self.dom.$elem.removeClass(self.options.loadingClass);
-                if (self._reqCounter == reqCounter) callback(parsed);
+                if (self._reqCounter == reqCounter) {
+                    self.dom.$elem.removeClass(self.options.loadingClass);
+                    callback(parsed);
+                }
             };
             this.dom.$elem.addClass(this.options.loadingClass);
             $.ajax({
